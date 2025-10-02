@@ -5,32 +5,42 @@ Sample Python file with various code issues for testing.
 
 import os
 import sys
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 def process_data(data):
     """Process some data."""
-    print(f"Processing data: {data}")  # Should use logging
+    logger.info(f"Processing data: {data}")
     result = data * 2
-    print(f"Result: {result}")  # Should use logging
+    logger.info(f"Result: {result}")
     return result
 
 def calculate_sum(a, b):
-    return a + b  # Missing docstring
-
-def dangerous_eval(user_input):
-    """Dangerous function using eval."""
-    return eval(user_input)  # Security risk
+    """Calculate sum of two numbers.
+    
+    Args:
+        a (int): First number
+        b (int): Second number
+    
+    Returns:
+        int: Sum of a and b
+    """
+    return a + b
 
 def main():
-    print("Starting application...")  # Should use logging
+    logger.info("Starting application...")
     
     # Simulate some processing
     data = [1, 2, 3, 4, 5]
     for item in data:
-        print(f"Processing item: {item}")  # Should use logging
+        logger.info(f"Processing item: {item}")
         result = process_data(item)
-        print(f"Item {item} processed: {result}")  # Should use logging
+        logger.info(f"Item {item} processed: {result}")
     
-    print("Application completed!")  # Should use logging
+    logger.info("Application completed!")
 
 if __name__ == "__main__":
     main()
